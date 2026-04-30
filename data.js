@@ -94,7 +94,7 @@ const TEAMS = {
         photo:    avatar("Mi", "b8860b"),
         portrait: portrait("MI", "7a5800"),
         champions: [
-          { name: "Kog'Maw",    img: champImg("Kogmaw")    },
+          { name: "Kog'Maw",    img: champImg("KogMaw")    },
           { name: "Sion", img: champImg("Sion") },
           { name: "Jhin",  img: champImg("Jhin")  },
         ],
