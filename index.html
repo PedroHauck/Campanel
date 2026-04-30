@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super campeonato anel</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Partículas de fundo -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- ════════════════════════════════
+       TELA 1 — SELEÇÃO DE TIME
+  ════════════════════════════════ -->
+  <section id="screen-home" class="screen active">
+    <header class="site-header">
+      <div class="logo-mark">⬡</div>
+      <h1 class="site-title">SUPER CAMP<span>ANEL</span></h1>
+      <p class="site-subtitle">Dados de jogadores</p>
+    </header>
+
+    <!-- ALTERADO: adicionado team3-btn e layout de 3 times -->
+    <div class="team-select-wrapper">
+      <button class="team-btn team1-btn" onclick="selectTeam('team1')">
+        <div class="team-btn-glow"></div>
+        <span class="team-btn-label">TIME 1</span>
+        <span class="team-btn-sub">CAMPEÕES MUNDIAIS</span>
+        <div class="team-btn-corner tl"></div>
+        <div class="team-btn-corner br"></div>
+      </button>
+
+      <div class="vs-divider"><span>VS</span></div>
+
+      <button class="team-btn team2-btn" onclick="selectTeam('team2')">
+        <div class="team-btn-glow"></div>
+        <span class="team-btn-label">TIME 2</span>
+        <span class="team-btn-sub">LEGIÃO DO MAL</span>
+        <div class="team-btn-corner tl"></div>
+        <div class="team-btn-corner br"></div>
+      </button>
+
+      <div class="vs-divider"><span>VS</span></div>
+
+      <!-- NOVO: botão Time 3 -->
+      <button class="team-btn team3-btn" onclick="selectTeam('team3')">
+        <div class="team-btn-glow"></div>
+        <span class="team-btn-label">TIME 3</span>
+        <span class="team-btn-sub">DONOS DO JOGO</span>
+        <div class="team-btn-corner tl"></div>
+        <div class="team-btn-corner br"></div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       TELA 2 — LISTA DE JOGADORES
+  ════════════════════════════════ -->
+  <section id="screen-players" class="screen">
+    <header class="page-header">
+      <button class="back-btn" onclick="goHome()">← TIMES</button>
+      <h2 class="page-title" id="playersTitle">TIME 1</h2>
+      <div class="header-line"></div>
+    </header>
+
+    <div class="players-grid" id="playersGrid"></div>
+  </section>
+
+  <!-- ════════════════════════════════
+       TELA 3 — PERFIL DO JOGADOR
+  ════════════════════════════════ -->
+  <section id="screen-profile" class="screen">
+    <header class="page-header">
+      <button class="back-btn" onclick="goPlayers()">← <span id="profileBackLabel">JOGADORES</span></button>
+      <h2 class="page-title" id="profileTeamLabel">TIME 1</h2>
+      <div class="header-line"></div>
+    </header>
+
+    <div class="profile-layout">
+
+      <!-- Coluna esquerda: avatar, nome, campeões -->
+      <div class="profile-left">
+
+        <!-- NOVO: Portrait — foto grande estilo jogador profissional -->
+        <div class="player-portrait-wrap">
+          <img id="profilePortrait" src="" alt="Portrait" />
+          <div class="portrait-overlay"></div>
+        </div>
+
+        <div class="player-avatar-wrap">
+          <img id="profileAvatar" src="" alt="Jogador" />
+          <div class="avatar-ring"></div>
+        </div>
+
+        <!-- Nome completo + apelido -->
+        <h3 class="player-name" id="profileName">—</h3>
+        <p class="player-nickname" id="profileNickname">—</p>
+        <p class="player-role" id="profileRole">—</p>
+
+        <!-- Campeões principais -->
+        <div class="champs-section">
+          <p class="section-label">CAMPEÕES PRINCIPAIS</p>
+          <div class="champs-row" id="profileChamps"></div>
+        </div>
+
+        <!-- Botão Editar Jogador -->
+        <button class="edit-btn" id="editBtn" onclick="openEditModal()">
+          <span class="edit-btn-icon">✎</span>
+          EDITAR JOGADOR
+        </button>
+      </div>
+
+      <!-- Coluna direita: radar + barras -->
+      <div class="profile-right">
+        <p class="section-label">HABILIDADES</p>
+        <div class="radar-wrap">
+          <canvas id="radarChart"></canvas>
+        </div>
+        <div class="stat-bars" id="statBars"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       MODAL DE EDIÇÃO
+  ════════════════════════════════ -->
+  <div id="editModalOverlay" class="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Editar jogador">
+
+      <div class="modal-header">
+        <h3 class="modal-title">✎ EDITAR JOGADOR</h3>
+        <button class="modal-close" onclick="closeEditModal()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- NOVO: Seção Portrait -->
+        <p class="modal-section-label">🖼️ FOTO DO JOGADOR (PORTRAIT)</p>
+        <div class="portrait-editor" id="portraitEditor">
+          <div class="portrait-editor-preview">
+            <img id="portraitPreview" src="" alt="Portrait preview"
+                 onerror="this.src='https://via.placeholder.com/100x100/111/555?text=?'" />
+          </div>
+          <div class="portrait-editor-fields">
+            <label class="field-label">URL da imagem (quadrada, busto)</label>
+            <input
+              class="modal-input"
+              id="portraitUrl"
+              type="text"
+              placeholder="https://exemplo.com/foto.jpg"
+              oninput="previewPortrait()"
+            />
+            <span class="field-hint">Dica: use imagem quadrada (ex: 400×400px) para melhor resultado</span>
+          </div>
+        </div>
+
+        <!-- ── Seção: Campeões ── -->
+        <p class="modal-section-label" style="margin-top:24px">🎮 CAMPEÕES PRINCIPAIS</p>
+        <div class="champ-editors" id="champEditors">
+          <!-- 3 blocos gerados pelo JS -->
+        </div>
+
+        <!-- ── Seção: Atributos ── -->
+        <p class="modal-section-label" style="margin-top:24px">📊 ATRIBUTOS (0–100)</p>
+        <div class="stat-editors" id="statEditors">
+          <!-- 4 sliders gerados pelo JS -->
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancel" onclick="closeEditModal()">CANCELAR</button>
+        <button class="modal-btn modal-btn-save"   onclick="saveEdits()">💾 SALVAR</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
