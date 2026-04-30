@@ -52,9 +52,9 @@ const TEAMS = {
         photo:    avatar("Drão", "c8962a"),
         portrait: portrait("DR", "8a6010"),
         champions: [
-          { name: "Darius",  img: champImg("Darius")  },
-          { name: "Garen",   img: champImg("Garen")   },
-          { name: "Camille", img: champImg("Camille") },
+          { name: "Sett",  img: champImg("Sett")  },
+          { name: "Aatrox",   img: champImg("Aatrox")   },
+          { name: "Anivia", img: champImg("Anivia") },
         ],
         stats: { macro: 23, micro: 77, calls: 12, pool: 11 },
       },
@@ -128,7 +128,7 @@ const TEAMS = {
     theme:       "red",
     accentColor: "#cc2233",
     gradientA:   "#cc2233",
-    gradientB:   "#6b0010",
+    gradientB:   "#d4d4d4",
     players: [
       {
         id:       "t2p1",
@@ -138,11 +138,11 @@ const TEAMS = {
         photo:    avatar("bu", "cc2233"),
         portrait: portrait("BU", "8a0020"),
         champions: [
-          { name: "Malphite", img: champImg("Malphite") },
-          { name: "Shen",     img: champImg("Shen")     },
+          { name: "Riven", img: champImg("Riven") },
+          { name: "Ezreal",     img: champImg("Ezreal")     },
           { name: "Akali", img: champImg("Akali")  },
         ],
-        stats: { macro: 74, micro: 86, calls: 60, pool: 78 },
+        stats: { macro: 14, micro: 57, calls: 7, pool: 57 },
       },
       {
         id:       "t2p2",
@@ -152,11 +152,11 @@ const TEAMS = {
         photo:    avatar("vivi", "a81020"),
         portrait: portrait("VI", "780010"),
         champions: [
-          { name: "LeeSin",  img: champImg("LeeSin")  },
-          { name: "Elise",   img: champImg("Elise")   },
-          { name: "Hecarim", img: champImg("Hecarim") },
+          { name: "Gragas",  img: champImg("Gragas")  },
+          { name: "Rengar",   img: champImg("Rengar")   },
+          { name: "MissFortune", img: champImg("MissFortune") },
         ],
-        stats: { macro: 83, micro: 91, calls: 75, pool: 84 },
+        stats: { macro: 40, micro: 65, calls: 16, pool: 72 },
       },
       {
         id:       "t2p3",
@@ -166,11 +166,11 @@ const TEAMS = {
         photo:    avatar("Igor", "c0001a"),
         portrait: portrait("IG", "850010"),
         champions: [
-          { name: "Viktor",   img: champImg("Viktor")   },
-          { name: "Lissandra",img: champImg("Lissandra")},
-          { name: "Cassiopeia", img: champImg("Cassiopeia") },
+          { name: "Katarina",   img: champImg("Katarina")   },
+          { name: "Qiyana",img: champImg("Qiyana")},
+          { name: "Teemo", img: champImg("Teemo") },
         ],
-        stats: { macro: 71, micro: 93, calls: 68, pool: 89 },
+        stats: { macro: 27, micro: 70, calls: 32, pool: 42},
       },
       {
         id:       "t2p4",
@@ -180,11 +180,11 @@ const TEAMS = {
         photo:    avatar("Tapes", "991122"),
         portrait: portrait("TP", "6a0018"),
         champions: [
-          { name: "Jhin",   img: champImg("Jhin")   },
-          { name: "Ashe",   img: champImg("Ashe")   },
-          { name: "MissFortune", img: champImg("MissFortune") },
+          { name: "Pyke",   img: champImg("Pyke")   },
+          { name: "Caitlyn",   img: champImg("Caitlyn")   },
+          { name: "Seraphine", img: champImg("Seraphine") },
         ],
-        stats: { macro: 80, micro: 88, calls: 65, pool: 75 },
+        stats: { macro: 23, micro: 51, calls: 32, pool: 57 },
       },
       {
         id:       "t2p5",
@@ -194,11 +194,11 @@ const TEAMS = {
         photo:    avatar("brizz", "800010"),
         portrait: portrait("BR", "550008"),
         champions: [
-          { name: "Soraka",   img: champImg("Soraka")   },
-          { name: "Morgana",  img: champImg("Morgana")  },
-          { name: "Alistar",  img: champImg("Alistar")  },
+          { name: "Gwen",   img: champImg("Gwen")   },
+          { name: "Swain",  img: champImg("Swain")  },
+          { name: "Sett",  img: champImg("Sett")  },
         ],
-        stats: { macro: 86, micro: 72, calls: 91, pool: 70 },
+        stats: { macro: 43, micro: 72, calls: 41, pool: 39 },
       },
     ],
   },
@@ -214,7 +214,7 @@ const TEAMS = {
     theme:       "blue",
     accentColor: "#1a6fc4",
     gradientA:   "#1a6fc4",
-    gradientB:   "#050d1a",
+    gradientB:   "#194085",
     players: [
       {
         id:       "t3p1",
@@ -228,7 +228,7 @@ const TEAMS = {
           { name: "Gnar", img: champImg("Gnar")   },
           { name: "Gangplank",img: champImg("Gangplank")},
         ],
-        stats: { macro: 80, micro: 85, calls: 70, pool: 82 },
+        stats: { macro: 80, micro: 79, calls: 99, pool: 82 },
       },
       {
         id:       "t3p2",
@@ -242,7 +242,7 @@ const TEAMS = {
           { name: "Amumu",     img: champImg("Amumu")    },
           { name: "Sejuani",   img: champImg("Sejuani")  },
         ],
-        stats: { macro: 88, micro: 79, calls: 84, pool: 76 },
+        stats: { macro: 10, micro: 27, calls: 16, pool: 31 },
       },
       {
         id:       "t3p3",
@@ -256,7 +256,7 @@ const TEAMS = {
           { name: "Malphite",   img: champImg("Malphite")   },
           { name: "Malzahar", img: champImg("Malzahar") },
         ],
-        stats: { macro: 76, micro: 90, calls: 73, pool: 86 },
+        stats: { macro: 4, micro: 13, calls: 2, pool: 18 },
       },
       {
         id:       "t3p4",
@@ -270,7 +270,7 @@ const TEAMS = {
           { name: "Malzahar",img: champImg("Malzahar")},
           { name: "RekSai",  img: champImg("RekSai")  },
         ],
-        stats: { macro: 77, micro: 94, calls: 62, pool: 88 },
+        stats: { macro: 21, micro: 49, calls: 31, pool: 56 },
       },
       {
         id:       "t3p5",
@@ -284,7 +284,7 @@ const TEAMS = {
           { name: "Milio",  img: champImg("Milio")  },
           { name: "Sona",   img: champImg("Sona")   },
         ],
-        stats: { macro: 91, micro: 68, calls: 95, pool: 65 },
+        stats: { macro: 3, micro: 12, calls: 6, pool: 31 },
       },
     ],
   },
